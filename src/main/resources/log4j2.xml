@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" strict="true">
+	<Properties>
+		<Property name="logPath">logs</Property>
+	</Properties>
+	<Appenders>
+		<Appender type="Console" name="eclipseConsole" target="SYSTEM_OUT">
+			<Layout type="PatternLayout" pattern="%d %-5p [%t] %c - %m%n" />
+		</Appender>
+		<Appender type="RollingRandomAccessFile" name="rollingFile" fileName="${logPath}/TestWebapp.log"
+			filePattern="${logPath}/TestWebapp.log.%d{yyyy-MM-dd}">
+			<Layout type="PatternLayout" pattern="%d %-5p [%t] %c - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="31"/>
+		</Appender>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="rollingFile" />
+			<AppenderRef ref="eclipseConsole" />
+		</Root>
+	</Loggers>
+</Configuration>
