@@ -1,5 +1,8 @@
 package webapp;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.Configuration.ClassList;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -67,7 +70,7 @@ public abstract class BaseIntegrationTestClass
 		context.setResourceBase(webappDir);
 		context.setDescriptor("src/test/resources/WEB-INF/web.xml");
 		context.setContextPath("/webapp");		
-		context.setParentLoaderPriority(true);
+		context.setClassLoader(new URLClassLoader(new URL[0], BaseIntegrationTestClass.class.getClassLoader()));
 		context.addEventListener(new Listener()); // add WELD listener
 		
 		jettyServer.setHandler(context);
