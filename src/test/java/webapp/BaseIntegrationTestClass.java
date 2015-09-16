@@ -27,6 +27,12 @@ public abstract class BaseIntegrationTestClass
 		log.info("Starting embedded Jetty server...");
 		startJettyServer();
 		log.info("Embedded Jetty server started!");
+		log.info("Stopping embedded Jetty server...");
+		stopJettyServer();
+		log.info("Embedded Tomcat Jetty stopped!");
+		log.info("Starting embedded Jetty server...");
+		startJettyServer();
+		log.info("Embedded Jetty server started!");
 	}
 
 	@AfterClass
