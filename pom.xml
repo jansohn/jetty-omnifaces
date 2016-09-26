@@ -15,7 +15,11 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 
 		<!-- Specify jetty version (https://www.eclipse.org/jetty/documentation/current/what-jetty-version.html) -->
-		<jetty-version>9.3.2.v20150730</jetty-version>
+		<jetty-version>9.3.12.v20160915</jetty-version>
+        <log4j-version>2.6.2</log4j-version>
+		<faces-version>2.2.13</faces-version>
+		<omnifaces-version>2.5.1</omnifaces-version>
+		<weld-version>2.4.0.Final</weld-version>
 	</properties>
 
 	<build>
@@ -54,7 +58,7 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>2.2.12</version>
+			<version>${faces-version}</version>
 		</dependency>
 
 		<dependency>
@@ -78,14 +82,14 @@
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
-			<version>2.3.0.CR2</version>
+			<version>${weld-version}</version>
 		</dependency>
 
 		<!-- Omnifaces -->
  		<dependency>
  			<groupId>org.omnifaces</groupId>
  			<artifactId>omnifaces</artifactId>
- 			<version>2.2-SNAPSHOT</version>
+ 			<version>${omnifaces-version}</version>
  		</dependency>
 
 		<!-- Bean validation -->
@@ -97,32 +101,21 @@
 
 		<!-- Logging, slf4j + log4j2 -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>2.3</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-web</artifactId>
-			<version>2.3</version>
-		</dependency>
-		<!-- Needed for fast asynchronous logging -->
-		<dependency>
-			<groupId>com.lmax</groupId>
-			<artifactId>disruptor</artifactId>
-			<version>3.3.0</version>
+			<version>${log4j-version}</version>
 		</dependency>
 
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -134,7 +127,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
-			<version>2.18</version>
+			<version>2.23.2</version>
 		</dependency>
 
 		<!-- Embedded jetty webserver -->
@@ -154,6 +147,13 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>apache-jsp</artifactId>
 			<version>${jetty-version}</version>
+			<scope>test</scope>
+		</dependency>
+        <!-- for Omnifaces 2.3+ in embedded Jetty -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
